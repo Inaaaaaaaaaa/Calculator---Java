@@ -82,11 +82,39 @@ public class Calculator implements ActionListener{
         delBtn.setBounds(50,430,145,50);
         clearBtn.setBounds(205,430,145,50);
         
-        //visible components on frame
-        frame.add(textField);
-        frame.setVisible(true);
+        //jpanel
+        panel = new JPanel();
+        panel.setBounds(50,100, 300, 300);
+        panel.setLayout(new GridLayout(4,4,10,10));
+        
+        //adding buttons 1-3
+        panel.add(numberBtn[1]);
+        panel.add(numberBtn[2]);
+        panel.add(numberBtn[3]);
+        panel.add(addBtn); 
+                
+        //adding buttons 4-6
+        panel.add(numberBtn[4]);
+        panel.add(numberBtn[5]);
+        panel.add(numberBtn[6]);
+        panel.add(subBtn);
+        
+        //adding buttons 7-9
+        panel.add(numberBtn[7]);
+        panel.add(numberBtn[8]);
+        panel.add(numberBtn[9]);
+        panel.add(multiBtn);
+        panel.add(decBtn);
+        panel.add(numberBtn[0]);
+        panel.add(equalBtn);
+        panel.add(divBtn);
+
+        //adding components to frame
+        frame.add(panel);
         frame.add(delBtn);
         frame.add(clearBtn);
+        frame.add(textField);      
+        frame.setVisible(true);
     }
     
     public static void main(String[] args) {
