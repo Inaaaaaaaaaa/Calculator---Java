@@ -12,8 +12,6 @@ import javax.swing.*;
  *
  * @author Yuna
  */
-
-
 public class Calculator implements ActionListener{
     
     JFrame frame;
@@ -31,10 +29,75 @@ public class Calculator implements ActionListener{
 
     Calculator()
     {
+        //visible frame 
+        frame = new JFrame("Calculator");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(420, 520);
+        frame.setLayout(null);
         
+        //creating new text field
+        textField = new JTextField();
+        textField.setBounds(50, 25, 300, 50);
+        textField.setFont(myFont);
+        textField.setEditable(false); //cannot change text box
+        
+        //adding buttons - opeartors
+        addBtn = new JButton("+");
+        subBtn = new JButton("-");
+        multiBtn = new JButton("*");
+        divBtn = new JButton("/");
+        decBtn = new JButton(".");
+        equalBtn = new JButton("=");
+        delBtn = new JButton("Delete");
+        clearBtn = new JButton("Clear");
+        
+        //setting buttons to functionBtn array
+        functionBtn[0] = addBtn;
+        functionBtn[1] = subBtn;
+        functionBtn[2] = multiBtn;
+        functionBtn[3] = divBtn;
+        functionBtn[4] = decBtn;
+        functionBtn[5] = equalBtn;
+        functionBtn[6] = delBtn;
+        functionBtn[7] = clearBtn;
+                
+        //loop 8 times
+        for(int index = 0; index < 8; index++)
+        {
+            functionBtn[index].addActionListener(this);
+            functionBtn[index].setFont(myFont);
+            functionBtn[index].setFocusable(false);
+        }
+        
+        //iterate 10 times
+        for(int index = 0; index < 10; index++)
+        {
+            numberBtn[index] = new JButton(String.valueOf(index));
+            numberBtn[index].addActionListener(this);
+            numberBtn[index].setFont(myFont);
+            numberBtn[index].setFocusable(false);
+        }
+        
+        //location of delete and clear button (including size of buttons)
+        delBtn.setBounds(50,430,145,50);
+        clearBtn.setBounds(205,430,145,50);
+        
+        //visible components on frame
+        frame.add(textField);
+        frame.setVisible(true);
+        frame.add(delBtn);
+        frame.add(clearBtn);
     }
+    
     public static void main(String[] args) {
         
         Calculator calc = new Calculator();
+    }
+    
+    //action event 
+    @Override
+    public void actionPerformed(ActionEvent e)
+    {
+        
     }
 }
