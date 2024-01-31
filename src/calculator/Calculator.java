@@ -23,7 +23,12 @@ public class Calculator implements ActionListener{
     JPanel panel;
     
     //font of buttons
-    Font myFont = new Font("Ink Free", Font.BOLD, 30);
+    Font myFont = new Font("Ariel", Font.BOLD, 30);
+    
+    //variables 
+    double num1 = 0;
+    double num2 = 0;
+    double result = 0;
     char operator;
     
 
@@ -126,6 +131,70 @@ public class Calculator implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        
+        //functionality 
+        for(int index = 0; index < 10; index++)
+        {
+            if(e.getSource() == numberBtn[index])
+            {
+                //enables numbers to appear on text field when pressing on buttons
+                textField.setText(textField.getText().concat(String.valueOf(index)));
+            }
+        }
+        //enables user to click on operators 
+            if(e.getSource() == decBtn)
+            {
+                //enables user to use decimal button 
+                textField.setText(textField.getText().concat(String.valueOf(".")));
+            }
+            if(e.getSource() == addBtn)
+            {
+                num1 = Double.parseDouble(textField.getText());
+                operator = '+';
+                textField.setText("");
+            }
+            if(e.getSource() == subBtn)
+            {
+                num1 = Double.parseDouble(textField.getText());
+                operator = '-';
+                textField.setText("");
+            }
+            if(e.getSource() == multiBtn)
+            {
+                num1 = Double.parseDouble(textField.getText());
+                operator = '*';
+                textField.setText("");
+            }
+            if(e.getSource() == divBtn)
+            {
+                num1 = Double.parseDouble(textField.getText());
+                operator = '/';
+                textField.setText("");
+            }
+            if(e.getSource() == equalBtn)
+            {
+                num2 = Double.parseDouble(textField.getText());
+               
+                //switch case is used to determine to help calculator detect which operator is used and how to correctly calculate numbers 
+                switch(operator)
+                {
+                    case'+':
+                        result = num1+num2;
+                        break;
+                        
+                    case '-':
+                        result = num1- num2;
+                        break;
+                        
+                    case '/':
+                        result = num1 / num2;
+                        break;
+                        
+                    case '*':
+                        result = num1 * num2;
+                        break;
+                }
+                textField.setText(String.valueOf(result));
+                num1 = result;
+            }
     }
 }
